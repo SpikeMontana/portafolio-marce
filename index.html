@@ -1,238 +1,231 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marcelo Morales | Diseño Gráfico y Publicidad</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    .hero-bg { 
-      background: linear-gradient(135deg, #111111, #1f1f1f); 
-      background-size: cover; 
-      background-position: center;
-    }
-    .card-hover { 
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); 
-    }
-    .card-hover:hover { 
-      transform: scale(1.08) rotate(2deg); 
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5); 
-    }
-    .modal-content img {
-      max-height: 75vh;
-      object-fit: contain;
-      width: 100%;
-      border-radius: 16px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Marcelo Morales | Diseño Gráfico</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  cursor: none;
+}
+
+/* HERO ANIMADO */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.bg-animated {
+  background: radial-gradient(circle at 20% 30%, #1f1f1f, #000);
+  animation: float 6s ease-in-out infinite;
+}
+
+.glow-text {
+  text-shadow: 0 0 25px rgba(251,191,36,0.4);
+}
+
+/* CARDS PRO */
+.card-hover {
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+
+.card-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.card-hover:hover::after {
+  opacity: 1;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+/* CURSOR */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fbbf24;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+/* MODAL */
+.modal-content img {
+  max-height: 75vh;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 16px;
+}
+</style>
+
 </head>
+
 <body class="bg-zinc-950 text-white overflow-x-hidden">
 
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-lg z-50 border-b border-zinc-800">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center text-2xl font-bold">M</div>
-        <h1 class="text-2xl font-bold tracking-tight">MARCELO MORALES</h1>
-      </div>
-      <div class="hidden md:flex gap-8 text-lg">
-        <a href="#proyectos" class="hover:text-amber-400 transition">Proyectos</a>
-        <a href="#sobre" class="hover:text-amber-400 transition">Sobre mí</a>
-        <a href="#contacto" class="hover:text-amber-400 transition">Contacto</a>
-      </div>
-    </div>
-  </nav>
+<div class="cursor" id="cursor"></div>
 
-  <!-- HERO -->
-  <section class="hero-bg h-screen flex items-center justify-center text-center pt-20">
-    <div data-aos="fade-up" class="max-w-4xl px-6">
-      <h2 class="text-7xl md:text-8xl font-black tracking-tighter mb-4 text-white">MARCELO MORALES</h2>
-      <p class="text-4xl text-amber-400 font-light">Diseño Gráfico y Publicidad</p>
-      <p class="mt-8 text-xl max-w-md mx-auto text-zinc-300">15+ años creando marcas que impactan.<br>De Mexicali al mundo.</p>
-      <a href="#proyectos" class="mt-12 inline-block bg-amber-500 hover:bg-amber-600 text-black font-bold px-10 py-4 rounded-2xl text-xl transition">Ver mis proyectos →</a>
-    </div>
-  </section>
-
-  <!-- PROYECTOS -->
-  <section id="proyectos" class="max-w-7xl mx-auto px-6 py-24">
-    <h2 data-aos="fade-up" class="text-5xl font-bold text-center mb-16">Proyectos Destacados</h2>
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full bg-black/60 backdrop-blur-2xl z-50 border-b border-zinc-800 shadow-lg">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <h1 class="text-2xl font-bold">MARCELO</h1>
 
-      <!-- 1 Garcia & Garcia -->
-      <div data-aos="fade-up" data-aos-delay="100" onclick="openModal(1)" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-        <img src="https://i.imgur.com/6uKwpjA.jpeg" class="w-full h-64 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold">Garcia & Garcia – Emigraciones</h3>
-          <p class="text-zinc-400 text-sm">Branding, flyers y tarjetas completas</p>
-        </div>
-      </div>
-
-      <!-- 2 Foto Luque -->
-      <div data-aos="fade-up" data-aos-delay="200" onclick="openModal(2)" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-        <img src="https://i.imgur.com/RAZYWG8.jpeg" class="w-full h-64 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold">Foto Luque – Eventos</h3>
-          <p class="text-zinc-400 text-sm">Publicidad para eventos y XV años</p>
-        </div>
-      </div>
-
-      <!-- 3 Noche de Tributos -->
-      <div data-aos="fade-up" data-aos-delay="300" onclick="openModal(3)" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-        <img src="https://i.imgur.com/MiSnomB.jpeg" class="w-full h-64 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold">Noche de Tributos – El Mitote</h3>
-          <p class="text-zinc-400 text-sm">Poster evento musical</p>
-        </div>
-      </div>
-
-      <!-- 4 Happy Pizza -->
-      <div data-aos="fade-up" data-aos-delay="400" onclick="openModal(4)" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-        <img src="https://i.imgur.com/fuI5Vlh.jpeg" class="w-full h-64 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold">Happy Pizza – Menú completo</h3>
-          <p class="text-zinc-400 text-sm">Diseño de menú y branding</p>
-        </div>
-      </div>
-
-      <!-- 5 Vintage Karaoke -->
-      <div data-aos="fade-up" data-aos-delay="500" onclick="openModal(5)" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-        <img src="https://i.imgur.com/Jr4NgS6.jpeg" class="w-full h-64 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold">Vintage – Karaoke & Sport Bar</h3>
-          <p class="text-zinc-400 text-sm">Flyer + logo premium</p>
-        </div>
-      </div>
-
-      <!-- 6 Mirvana Pastelería -->
-      <div data-aos="fade-up" data-aos-delay="600" onclick="openModal(6)" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-        <img src="https://i.imgur.com/5rgHxZj.jpeg" class="w-full h-64 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold">Mirvana – Menú y branding</h3>
-          <p class="text-zinc-400 text-sm">Logo + menú completo</p>
-        </div>
-      </div>
-
-      <!-- 7 Sun Travel -->
-      <div data-aos="fade-up" data-aos-delay="700" onclick="openModal(7)" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-        <img src="https://i.imgur.com/IRYBkRw.jpeg" class="w-full h-64 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold">Sun Travel – Agencia</h3>
-          <p class="text-zinc-400 text-sm">Flyer promocional internacional</p>
-        </div>
-      </div>
-
-      <!-- 8 Expo Teaching Materials -->
-      <div data-aos="fade-up" data-aos-delay="800" onclick="openModal(8)" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-        <img src="https://i.imgur.com/EY4nT18.jpeg" class="w-full h-64 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold">Expo 2017 – Teaching Materials</h3>
-          <p class="text-zinc-400 text-sm">Diseño para Facultad de Idiomas</p>
-        </div>
-      </div>
+    <div class="hidden md:flex gap-8">
+      <a href="#proyectos" class="relative group">
+        Proyectos
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-amber-400 transition-all group-hover:w-full"></span>
+      </a>
+      <a href="#sobre" class="relative group">
+        Sobre mí
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-amber-400 transition-all group-hover:w-full"></span>
+      </a>
     </div>
-  </section>
+  </div>
+</nav>
 
-<!-- SOBRE MÍ -->
-<section id="sobre" class="bg-black py-24">
-  <div class="max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
-    
-    <h2 class="text-5xl font-bold mb-8">Sobre mí</h2>
-    
-    <div class="text-xl text-zinc-300 leading-relaxed text-justify space-y-6">
-      
-      <p>
-        Soy Marcelo Morales, diseñador gráfico con más de 15 años de experiencia desarrollando soluciones visuales que no solo destacan, sino que generan resultados. A lo largo de mi trayectoria he trabajado en la creación de identidades de marca, campañas publicitarias, menús, flyers y material gráfico para eventos, siempre enfocado en transmitir mensajes claros, atractivos y efectivos.
-      </p>
+<!-- HERO -->
+<section class="bg-animated h-screen flex items-center justify-center text-center pt-20">
+  <div data-aos="fade-up">
 
-      <p>
-        Mi enfoque combina creatividad con estrategia: cada diseño que realizo está pensado para conectar con el público, fortalecer la identidad del cliente y, sobre todo, impulsar ventas. Entiendo que el diseño no es solo estética, sino una herramienta clave para posicionar negocios y crear experiencias memorables.
-      </p>
+    <h2 class="text-7xl md:text-8xl font-black glow-text">
+      MARCELO MORALES
+    </h2>
 
-      <p>
-        Trabajo desde Mexicali, Baja California, colaborando con emprendedores, negocios locales y proyectos en crecimiento que buscan diferenciarse en un mercado competitivo. Me adapto a cada necesidad, cuidando cada detalle para entregar piezas visuales funcionales, modernas y alineadas con los objetivos de cada cliente.
-      </p>
+    <p class="text-3xl text-amber-400 mt-4 animate-pulse">
+      Diseño que vende
+    </p>
 
-      <p class="font-semibold text-white">
-        Más que diseñar, construyo comunicación visual con intención.
-      </p>
+    <p class="mt-6 text-zinc-400">
+      Branding • Publicidad • Estrategia visual
+    </p>
 
-    </div>
+    <a href="#proyectos"
+       class="mt-10 inline-block bg-amber-500 px-8 py-3 rounded-xl font-bold hover:scale-110 transition">
+      Ver proyectos →
+    </a>
 
   </div>
 </section>
 
-  <!-- FOOTER / CONTACTO CON WHATSAPP -->
-  <footer id="contacto" class="bg-zinc-900 py-16 text-center">
-    <p class="text-2xl font-light">¿Listo para tu próximo proyecto?</p>
-    
-    <!-- BOTÓN WHATSAPP -->
-    <a href="https://wa.me/526865495534?text=Hola%20Marcelo%2C%20vi%20tu%20portafolio%20y%20me%20encantaría%20trabajar%20contigo%21" 
-       target="_blank"
-       class="mt-8 inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-black font-bold px-12 py-5 rounded-3xl text-2xl transition shadow-2xl">
-      📲 Contactame por WhatsApp ahora
-    </a>
+<!-- PROYECTOS -->
+<section id="proyectos" class="max-w-7xl mx-auto px-6 py-24">
 
-    <p class="mt-12 text-zinc-500">© 2026 Marcelo Morales – Diseño Gráfico y Publicidad • Mexicali, Baja California</p>
-  </footer>
+<h2 class="text-5xl font-bold text-center mb-16">Proyectos</h2>
 
-  <!-- MODAL -->
-  <div id="modal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[100] p-6">
-    <div class="max-w-5xl bg-zinc-900 rounded-3xl overflow-hidden relative w-full">
-      <button onclick="closeModal()" 
-              class="absolute top-6 right-6 text-5xl text-white hover:text-amber-400 transition z-10">×</button>
-      <div id="modal-content" class="p-8 modal-content"></div>
+<div class="grid md:grid-cols-3 gap-8">
+
+  <div onclick="openModal('https://i.imgur.com/6uKwpjA.jpeg')" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+    <img src="https://i.imgur.com/6uKwpjA.jpeg">
+    <div class="p-6">
+      <h3 class="text-xl">Garcia & Garcia</h3>
+      <p class="text-zinc-400">Branding completo</p>
     </div>
   </div>
 
-  <script>
-    AOS.init({ once: true, duration: 800 });
+  <div onclick="openModal('https://i.imgur.com/RAZYWG8.jpeg')" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+    <img src="https://i.imgur.com/RAZYWG8.jpeg">
+    <div class="p-6">
+      <h3 class="text-xl">Foto Luque</h3>
+      <p class="text-zinc-400">Eventos</p>
+    </div>
+  </div>
 
-    function openModal(id) {
-      const content = document.getElementById('modal-content');
-      let html = '';
+  <div onclick="openModal('https://i.imgur.com/MiSnomB.jpeg')" class="card-hover bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+    <img src="https://i.imgur.com/MiSnomB.jpeg">
+    <div class="p-6">
+      <h3 class="text-xl">Noche de Tributos</h3>
+      <p class="text-zinc-400">Poster</p>
+    </div>
+  </div>
 
-      switch(id) {
-        case 1: 
-          html = `<img src="https://i.imgur.com/6uKwpjA.jpeg" class="rounded-2xl"><h2 class="text-4xl mt-8 font-bold">Garcia & Garcia</h2><p class="text-xl text-zinc-400 mt-4">Branding completo, flyers y tarjetas para servicios de inmigración y paralegales.</p>`; 
-          break;
-        case 2: 
-          html = `<img src="https://i.imgur.com/RAZYWG8.jpeg" class="rounded-2xl"><h2 class="text-4xl mt-8 font-bold">Foto Luque</h2><p class="text-xl text-zinc-400 mt-4">Publicidad profesional para eventos, XV años, bodas, bautizos y más.</p>`; 
-          break;
-        case 3: 
-          html = `<img src="https://i.imgur.com/MiSnomB.jpeg" class="rounded-2xl"><h2 class="text-4xl mt-8 font-bold">Noche de Tributos</h2><p class="text-xl text-zinc-400 mt-4">Poster para evento musical en El Mitote con Nirvana y Foo Fighters.</p>`; 
-          break;
-        case 4: 
-          html = `<img src="https://i.imgur.com/fuI5Vlh.jpeg" class="rounded-2xl"><h2 class="text-4xl mt-8 font-bold">Happy Pizza</h2><p class="text-xl text-zinc-400 mt-4">Menú completo con precios, pizzas y promociones.</p>`; 
-          break;
-        case 5: 
-          html = `<img src="https://i.imgur.com/Jr4NgS6.jpeg" class="rounded-2xl"><h2 class="text-4xl mt-8 font-bold">Vintage Karaoke & Sport Bar</h2><p class="text-xl text-zinc-400 mt-4">Flyer promocional para noche de karaoke.</p>`; 
-          break;
-        case 6: 
-          html = `<img src="https://i.imgur.com/5rgHxZj.jpeg" class="rounded-2xl"><h2 class="text-4xl mt-8 font-bold">Mirvana Pastelería y Cafetería</h2><p class="text-xl text-zinc-400 mt-4">Logo + menú completo de comida y postres.</p>`; 
-          break;
-        case 7: 
-          html = `<img src="https://i.imgur.com/IRYBkRw.jpeg" class="rounded-2xl"><h2 class="text-4xl mt-8 font-bold">Sun Travel</h2><p class="text-xl text-zinc-400 mt-4">Flyer agencia de viajes internacional.</p>`; 
-          break;
-        case 8: 
-          html = `<img src="https://i.imgur.com/EY4nT18.jpeg" class="rounded-2xl"><h2 class="text-4xl mt-8 font-bold">Expo Teaching Materials 2017</h2><p class="text-xl text-zinc-400 mt-4">Diseño para Facultad de Idiomas.</p>`; 
-          break;
-      }
-      
-      content.innerHTML = html;
-      document.getElementById('modal').classList.remove('hidden');
-    }
+</div>
 
-    function closeModal() {
-      document.getElementById('modal').classList.add('hidden');
-    }
+</section>
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === "Escape") closeModal();
-    });
-  </script>
+<!-- SOBRE -->
+<section id="sobre" class="bg-black py-24">
+<div class="max-w-4xl mx-auto px-6 text-center">
+
+<h2 class="text-5xl mb-10">Sobre mí</h2>
+
+<div class="text-lg text-zinc-300 text-justify space-y-6">
+
+<p>
+Soy Marcelo Morales, diseñador gráfico con más de 15 años de experiencia creando soluciones visuales que generan resultados reales.
+</p>
+
+<p>
+Mi trabajo combina creatividad con estrategia para conectar marcas con personas y convertir ideas en impacto.
+</p>
+
+<p class="text-white font-semibold">
+Más que diseñar, construyo comunicación visual.
+</p>
+
+</div>
+
+</div>
+</section>
+
+<!-- CONTACTO -->
+<footer class="text-center py-16 bg-zinc-900">
+
+<a href="https://wa.me/526865495534"
+class="bg-green-500 px-10 py-4 rounded-2xl text-black font-bold hover:scale-110 transition">
+WhatsApp
+</a>
+
+<p class="mt-10 text-zinc-500">
+© 2026 Marcelo Morales
+</p>
+
+</footer>
+
+<!-- MODAL -->
+<div id="modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center">
+  <img id="modal-img" class="max-w-4xl rounded-xl">
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+AOS.init();
+
+/* CURSOR */
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+/* MODAL */
+function openModal(src){
+  document.getElementById('modal').classList.remove('hidden');
+  document.getElementById('modal-img').src = src;
+}
+
+document.getElementById('modal').onclick = () => {
+  document.getElementById('modal').classList.add('hidden');
+};
+</script>
+
 </body>
 </html>
