@@ -92,22 +92,21 @@ body {
 
 <!-- NAVBAR -->
 <nav id="navbar" class="fixed top-0 w-full z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-center items-center">
 
-    <h1 class="text-xl md:text-2xl font-bold tracking-widest hover:scale-105 transition">
-      MARCELO MORALES
-    </h1>
-
+    <!-- MENÚ CENTRADO -->
     <div class="hidden md:flex gap-10 text-sm uppercase tracking-wider">
       <a href="#proyectos" class="nav-link">Proyectos</a>
       <a href="#sobre" class="nav-link">Sobre mí</a>
       <a href="#contacto" class="nav-link">Contacto</a>
     </div>
 
-    <button id="menu-btn" class="md:hidden text-2xl">☰</button>
+    <!-- BOTÓN MOBILE (lado derecho absoluto) -->
+    <button id="menu-btn" class="md:hidden text-2xl absolute right-6">☰</button>
 
   </div>
 
+  <!-- MOBILE MENU -->
   <div id="mobile-menu" class="hidden flex-col text-center bg-black/95 backdrop-blur-xl py-6 space-y-6 text-lg">
     <a href="#proyectos" class="nav-link">Proyectos</a>
     <a href="#sobre" class="nav-link">Sobre mí</a>
